@@ -1,0 +1,35 @@
+<!-- formulario.component.html -->
+<div class="form-container">
+    <h2>Formulario de Registro</h2>
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <div class="form-group">
+        <label for="name">Nombre</label>
+        <input type="text" id="name" name="name" ngModel required class="form-control" />
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" ngModel required email class="form-control" />
+      </div>
+  
+      <div class="form-group">
+        <label for="phone">Número de teléfono</label>
+        <input type="text" id="phone" name="phone" ngModel required pattern="^[0-9]{10}$" class="form-control" />
+      </div>
+  
+      <div class="form-group">
+        <label for="address">Dirección</label>
+        <input type="text" id="address" name="address" ngModel required class="form-control" />
+      </div>
+  
+      <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-primary">
+        Enviar
+      </button>
+    </form>
+  
+    <!-- Mensaje de éxito al enviar -->
+    <div *ngIf="formSubmitted" class="alert alert-success mt-3">
+      ¡La información se ha enviado correctamente!
+    </div>
+  </div>
+  
